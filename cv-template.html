@@ -1,69 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>My CV</title>
+  <meta charset="UTF-8" />
+  <title>Generated CV</title>
   <style>
-    body { font-family: sans-serif; padding: 40px; max-width: 800px; margin: auto; background: #ffffff; }
-    .header { display: flex; align-items: center; }
-    .header img { width: 120px; height: 120px; border-radius: 50%; margin-right: 20px; }
-    .header h1 { margin: 0; }
-    section { margin-top: 20px; }
-    h2 { border-bottom: 1px solid #ccc; padding-bottom: 5px; }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+    .left, .right {
+      padding: 30px;
+    }
+    .left {
+      width: 35%;
+      background: #2f3e46;
+      color: white;
+    }
+    .right {
+      width: 65%;
+      background: #f4f4f4;
+    }
+    img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+    h2 {
+      margin: 5px 0;
+    }
+    .section {
+      margin-bottom: 25px;
+    }
+    .section h3 {
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 5px;
+    }
   </style>
 </head>
 <body>
-  <div class="header">
-    <img id="profilePic" src="" alt="Profile Picture">
-    <div>
-      <h1 id="fullName">Name</h1>
-      <p id="jobTitle">Job Title</p>
-      <p><a id="emailLink" href="#">Email</a> | <span id="phone">Phone</span></p>
-      <p id="address">Address</p>
-      <p><strong>Languages:</strong> <span id="languages"></span></p>
-    </div>
+
+<div class="left" id="leftPanel">
+  <img id="photo" src="" alt="Profile Picture" />
+  <h2 id="name"></h2>
+  <p id="job"></p>
+  <hr>
+  <div class="section">
+    <h3>Contact</h3>
+    <p id="email"></p>
+    <p id="phone"></p>
   </div>
+  <div class="section">
+    <h3>Languages</h3>
+    <p id="languages"></p>
+  </div>
+</div>
 
-  <section>
-    <h2>Professional Summary</h2>
+<div class="right">
+  <div class="section">
+    <h3>Profile Summary</h3>
     <p id="summary"></p>
-  </section>
-
-  <section>
-    <h2>Experience</h2>
+  </div>
+  <div class="section">
+    <h3>Experience</h3>
     <p id="experience"></p>
-  </section>
-
-  <section>
-    <h2>Education</h2>
+  </div>
+  <div class="section">
+    <h3>Education</h3>
     <p id="education"></p>
-  </section>
-
-  <section>
-    <h2>Skills</h2>
+  </div>
+  <div class="section">
+    <h3>Skills</h3>
     <p id="skills"></p>
-  </section>
+  </div>
+</div>
 
-  <script>
-    window.addEventListener('load', () => {
-      const hash = decodeURIComponent(location.hash.slice(1));
-      if (!hash) return;
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const data = JSON.parse(decodeURIComponent(params.get("data")));
 
-      const user = JSON.parse(hash);
+  document.getElementById("name").textContent = data.name;
+  document.getElementById("job").textContent = data.job;
+  document.getElementById("email").textContent = "📧 " + data.email;
+  document.getElementById("phone").textContent = "📞 " + data.phone;
+  document.getElementById("languages").textContent = data.languages;
+  document.getElementById("summary").textContent = data.summary;
+  document.getElementById("experience").textContent = data.experience;
+  document.getElementById("education").textContent = data.education;
+  document.getElementById("skills").textContent = data.skills;
+  document.getElementById("photo").src = data.photo;
+</script>
 
-      document.getElementById('profilePic').src = user.profilePic;
-      document.getElementById('fullName').textContent = user.fullName;
-      document.getElementById('jobTitle').textContent = user.jobTitle;
-      document.getElementById('emailLink').textContent = user.email;
-      document.getElementById('emailLink').href = 'mailto:' + user.email;
-      document.getElementById('phone').textContent = user.phone;
-      document.getElementById('address').textContent = user.address;
-      document.getElementById('languages').textContent = user.languages;
-      document.getElementById('summary').textContent = user.summary;
-      document.getElementById('experience').textContent = user.experience;
-      document.getElementById('education').textContent = user.education;
-      document.getElementById('skills').textContent = user.skills;
-    });
-  </script>
 </body>
 </html>
