@@ -1,98 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Generated CV</title>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Your CV</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
+      font-family: sans-serif;
+      margin: 20px;
     }
-    .left, .right {
+    .cv {
+      max-width: 800px;
+      margin: auto;
+      border: 1px solid #ccc;
       padding: 30px;
-    }
-    .left {
-      width: 35%;
-      background: #2f3e46;
-      color: white;
-    }
-    .right {
-      width: 65%;
-      background: #f4f4f4;
+      border-radius: 10px;
     }
     img {
-      width: 120px;
-      height: 120px;
+      max-width: 150px;
       border-radius: 50%;
-      object-fit: cover;
-      margin-bottom: 20px;
     }
-    h2 {
-      margin: 5px 0;
+    h1 {
+      margin-bottom: 10px;
     }
     .section {
-      margin-bottom: 25px;
-    }
-    .section h3 {
-      border-bottom: 2px solid #ccc;
-      padding-bottom: 5px;
+      margin-top: 20px;
     }
   </style>
 </head>
 <body>
+  <div class="cv">
+    <div style="text-align: center;">
+      <img id="cv-image" src="" alt="Profile Picture"/>
+      <h1 id="cv-name">Name</h1>
+    </div>
 
-<div class="left" id="leftPanel">
-  <img id="photo" src="" alt="Profile Picture" />
-  <h2 id="name"></h2>
-  <p id="job"></p>
-  <hr>
-  <div class="section">
-    <h3>Contact</h3>
-    <p id="email"></p>
-    <p id="phone"></p>
-  </div>
-  <div class="section">
-    <h3>Languages</h3>
-    <p id="languages"></p>
-  </div>
-</div>
+    <div class="section">
+      <h2>Summary</h2>
+      <p id="cv-summary"></p>
+    </div>
 
-<div class="right">
-  <div class="section">
-    <h3>Profile Summary</h3>
-    <p id="summary"></p>
-  </div>
-  <div class="section">
-    <h3>Experience</h3>
-    <p id="experience"></p>
-  </div>
-  <div class="section">
-    <h3>Education</h3>
-    <p id="education"></p>
-  </div>
-  <div class="section">
-    <h3>Skills</h3>
-    <p id="skills"></p>
-  </div>
-</div>
+    <div class="section">
+      <h2>Experience</h2>
+      <p id="cv-experience"></p>
+    </div>
 
-<script>
-  const params = new URLSearchParams(window.location.search);
-  const data = JSON.parse(decodeURIComponent(params.get("data")));
+    <div class="section">
+      <h2>Education</h2>
+      <p id="cv-education"></p>
+    </div>
 
-  document.getElementById("name").textContent = data.name;
-  document.getElementById("job").textContent = data.job;
-  document.getElementById("email").textContent = "📧 " + data.email;
-  document.getElementById("phone").textContent = "📞 " + data.phone;
-  document.getElementById("languages").textContent = data.languages;
-  document.getElementById("summary").textContent = data.summary;
-  document.getElementById("experience").textContent = data.experience;
-  document.getElementById("education").textContent = data.education;
-  document.getElementById("skills").textContent = data.skills;
-  document.getElementById("photo").src = data.photo;
-</script>
+    <div class="section">
+      <h2>Skills</h2>
+      <p id="cv-skills"></p>
+    </div>
+  </div>
 
+  <script>
+    const data = JSON.parse(localStorage.getItem("cvData"));
+
+    if (data) {
+      document.getElementById("cv-name").innerText = data.name;
+      document.getElementById("cv-image").src = data.image;
+      document.getElementById("cv-summary").innerText = data.summary;
+      document.getElementById("cv-experience").innerText = data.experience;
+      document.getElementById("cv-education").innerText = data.education;
+      document.getElementById("cv-skills").innerText = data.skills;
+    } else {
+      document.body.innerHTML = "<h2>No CV data found. Please go back and fill the form.</h2>";
+    }
+  </script>
 </body>
 </html>
