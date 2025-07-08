@@ -4,106 +4,32 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Smart CV Generator</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 30px;
-      background-color: #f4f4f4;
-    }
-    form {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 600px;
-      margin: auto;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-      margin-bottom: 20px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-    button {
-      padding: 12px 20px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 5px;
-    }
-  </style>
 </head>
 <body>
+  <h1>Smart CV Generator</h1>
 
-<h2 style="text-align:center;">Smart CV Generator</h2>
+  <form onsubmit="generateCV(); return false;">
+    <label>Full Name:</label><br/>
+    <input type="text" id="name" required/><br/><br/>
 
-<form id="cvForm">
-  <label>Full Name</label>
-  <input type="text" name="name" required>
+    <label>Photo URL:</label><br/>
+    <input type="text" id="image" placeholder="Paste image link here" /><br/><br/>
 
-  <label>Job Title</label>
-  <input type="text" name="job" required>
+    <label>Summary:</label><br/>
+    <textarea id="summary" rows="4" required></textarea><br/><br/>
 
-  <label>Email</label>
-  <input type="email" name="email" required>
+    <label>Experience:</label><br/>
+    <textarea id="experience" rows="6" required></textarea><br/><br/>
 
-  <label>Phone</label>
-  <input type="text" name="phone" required>
+    <label>Education:</label><br/>
+    <textarea id="education" rows="4"></textarea><br/><br/>
 
-  <label>Languages</label>
-  <input type="text" name="languages">
+    <label>Skills:</label><br/>
+    <textarea id="skills" rows="3"></textarea><br/><br/>
 
-  <label>Summary</label>
-  <textarea name="summary" rows="4"></textarea>
+    <button type="submit">Generate CV</button>
+  </form>
 
-  <label>Experience</label>
-  <textarea name="experience" rows="6"></textarea>
-
-  <label>Education</label>
-  <textarea name="education" rows="4"></textarea>
-
-  <label>Skills</label>
-  <textarea name="skills" rows="3"></textarea>
-
-  <label>Upload Profile Picture</label>
-  <input type="file" name="photo" id="photoInput" accept="image/*" required>
-
-  <button type="submit">Generate CV</button>
-</form>
-
-<script>
-document.getElementById("cvForm").addEventListener("submit", function(e) {
-  e.preventDefault();
-
-  const form = e.target;
-  const reader = new FileReader();
-  const file = form.photo.files[0];
-
-  reader.onloadend = function () {
-    const data = {
-      name: form.name.value,
-      job: form.job.value,
-      email: form.email.value,
-      phone: form.phone.value,
-      languages: form.languages.value,
-      summary: form.summary.value,
-      experience: form.experience.value,
-      education: form.education.value,
-      skills: form.skills.value,
-      photo: reader.result
-    };
-
-    const url = new URL("cv-template.html", window.location.href);
-    url.searchParams.set("data", encodeURIComponent(JSON.stringify(data)));
-    window.open(url.href, "_blank");
-  };
-
-  if (file) {
-    reader.readAsDataURL(file);
-  }
-});
-</script>
-
+  <script src="script.js"></script>
 </body>
 </html>
