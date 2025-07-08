@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CV Form</title>
+  <style>
+    body { font-family: Arial; padding: 20px; max-width: 800px; margin: auto; }
+    label { display: block; margin-top: 10px; font-weight: bold; }
+    input, textarea { width: 100%; padding: 8px; margin-top: 4px; }
+    .error { color: red; font-size: 14px; display: none; }
+    button { margin-top: 20px; padding: 10px 20px; font-size: 16px; }
+  </style>
+</head>
+<body>
+  <h2>Professional CV Form</h2>
+  <form id="cvForm">
+    <label>Full Name</label>
+    <input type="text" name="name" required />
+
+    <label>Email</label>
+    <input type="email" name="email" required />
+
+    <label>Phone</label>
+    <input type="text" name="phone" required />
+
+    <label>Address</label>
+    <input type="text" name="address" required />
+
+    <label>Languages</label>
+    <input type="text" name="languages" required />
+
+    <label>Profile Picture</label>
+    <input type="file" name="profilePic" accept="image/*" required />
+
+    <label>Summary (400–600 characters)</label>
+    <textarea name="summary" required></textarea>
+    <div class="error" id="summaryError"></div>
+
+    <label>Experience (1000–1400 characters)</label>
+    <textarea name="experience" required></textarea>
+    <div class="error" id="experienceError"></div>
+
+    <label>Education (max 750 characters)</label>
+    <textarea name="education" required maxlength="750"></textarea>
+
+    <label>Skills (max 450 characters)</label>
+    <textarea name="skills" required maxlength="450"></textarea>
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById("cvForm").addEventListener("submit", function(e) {
+      const summary = this.summary.value.trim();
+      const experience = this.experience.value.trim();
+      let valid = true;
+
+      if (summary.length < 400 || summary.length > 600) {
+        document.getElementById("summaryError").style.display = "block";
+        document.getElementById("summaryError").textContent = "Summary must be 400–600 characters including spaces.";
+        valid = false;
+      } else {
+        document.getElementById("summaryError").style.display = "none";
+      }
+
+      if (experience.length < 1000 || experience.length > 1400) {
+        document.getElementById("experienceError").style.display = "block";
+        document.getElementById("experienceError").textContent = "Experience must be 1000–1400 characters including spaces.";
+        valid = false;
+      } else {
+        document.getElementById("experienceError").style.display = "none";
+      }
+
+      if (!valid) e.preventDefault();
+    });
+  </script>
+</body>
+</html>
