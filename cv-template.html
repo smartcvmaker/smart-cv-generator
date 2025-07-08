@@ -1,0 +1,91 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart CV</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    .container {
+      display: flex;
+      max-width: 900px;
+      margin: 30px auto;
+      background: #fff;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .left {
+      background-color: #333;
+      color: white;
+      width: 35%;
+      padding: 20px;
+      text-align: center;
+    }
+    .left img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 20px;
+    }
+    .left h2 {
+      margin: 10px 0 5px;
+    }
+    .left p {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+    .right {
+      width: 65%;
+      padding: 20px;
+    }
+    .section {
+      margin-bottom: 20px;
+    }
+    .section h3 {
+      color: #333;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 5px;
+      margin-bottom: 10px;
+    }
+    .section p {
+      margin: 0;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <img src="profile-placeholder.jpg" alt="Profile Picture" id="profile-pic" />
+      <h2 id="full-name">Full Name Here</h2>
+      <p id="job-title">Job Title Here</p>
+      <p id="email">Email: <a href="mailto:email@example.com" style="color: lightblue;">email@example.com</a></p>
+      <p id="phone">Phone: +123456789</p>
+      <p id="address">Address: Your Address Here</p>
+      <p id="language">Languages: English, Urdu</p>
+    </div>
+    <div class="right">
+      <div class="section">
+        <h3>Summary</h3>
+        <p id="summary">Summary Here</p>
+      </div>
+      <div class="section">
+        <h3>Experience</h3>
+        <p id="experience">Experience Here</p>
+      </div>
+      <div class="section">
+        <h3>Education</h3>
+        <p id="education">Education Here</p>
+      </div>
+      <div class="section">
+        <h3>Skills</h3>
+        <p id="skills">Skills Here</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
