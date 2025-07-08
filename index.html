@@ -2,78 +2,108 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>CV Form</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Professional CV Builder Form for Global Users - Add your personal info, experience, skills, and more.">
+  <meta name="keywords" content="CV, Resume, Online CV Maker, Job Application, Free CV Builder">
+  <meta name="author" content="SmartCV.pk">
+  <title>Create Your CV - SmartCV</title>
   <style>
-    body { font-family: Arial; padding: 20px; max-width: 800px; margin: auto; }
-    label { display: block; margin-top: 10px; font-weight: bold; }
-    input, textarea { width: 100%; padding: 8px; margin-top: 4px; }
-    .error { color: red; font-size: 14px; display: none; }
-    button { margin-top: 20px; padding: 10px 20px; font-size: 16px; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      margin: 0;
+      padding: 0;
+    }
+    .container {
+      max-width: 700px;
+      background: #fff;
+      margin: 30px auto;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      color: #555;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+    input[type="file"] {
+      padding: 5px;
+    }
+    .note {
+      font-size: 12px;
+      color: #999;
+    }
+    button {
+      background: #007BFF;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      margin-top: 20px;
+      cursor: pointer;
+      border-radius: 6px;
+      width: 100%;
+      font-size: 16px;
+    }
+    button:hover {
+      background: #0056b3;
+    }
   </style>
 </head>
 <body>
-  <h2>Professional CV Form</h2>
-  <form id="cvForm">
-    <label>Full Name</label>
-    <input type="text" name="name" required />
+  <div class="container">
+    <h1>Build Your Professional CV</h1>
+    <form>
+      <label>Full Name</label>
+      <input type="text" required />
 
-    <label>Email</label>
-    <input type="email" name="email" required />
+      <label>Email</label>
+      <input type="email" required />
 
-    <label>Phone</label>
-    <input type="text" name="phone" required />
+      <label>Phone Number</label>
+      <input type="tel" required />
 
-    <label>Address</label>
-    <input type="text" name="address" required />
+      <label>Job Title</label>
+      <input type="text" required />
 
-    <label>Languages</label>
-    <input type="text" name="languages" required />
+      <label>Language</label>
+      <input type="text" />
 
-    <label>Profile Picture</label>
-    <input type="file" name="profilePic" accept="image/*" required />
+      <label>Address</label>
+      <input type="text" />
 
-    <label>Summary (400–600 characters)</label>
-    <textarea name="summary" required></textarea>
-    <div class="error" id="summaryError"></div>
+      <label>Profile Picture</label>
+      <input type="file" accept="image/*" />
 
-    <label>Experience (1000–1400 characters)</label>
-    <textarea name="experience" required></textarea>
-    <div class="error" id="experienceError"></div>
+      <label>Summary</label>
+      <textarea minlength="400" maxlength="600" required></textarea>
+      <span class="note">400 to 600 characters (including spaces)</span>
 
-    <label>Education (max 750 characters)</label>
-    <textarea name="education" required maxlength="750"></textarea>
+      <label>Experience</label>
+      <textarea minlength="1000" maxlength="1400" required></textarea>
+      <span class="note">1000 to 1400 characters (including spaces)</span>
 
-    <label>Skills (max 450 characters)</label>
-    <textarea name="skills" required maxlength="450"></textarea>
+      <label>Education</label>
+      <textarea maxlength="750"></textarea>
+      <span class="note">Maximum 750 characters</span>
 
-    <button type="submit">Submit</button>
-  </form>
+      <label>Skills</label>
+      <textarea maxlength="450"></textarea>
+      <span class="note">Maximum 450 characters</span>
 
-  <script>
-    document.getElementById("cvForm").addEventListener("submit", function(e) {
-      const summary = this.summary.value.trim();
-      const experience = this.experience.value.trim();
-      let valid = true;
-
-      if (summary.length < 400 || summary.length > 600) {
-        document.getElementById("summaryError").style.display = "block";
-        document.getElementById("summaryError").textContent = "Summary must be 400–600 characters including spaces.";
-        valid = false;
-      } else {
-        document.getElementById("summaryError").style.display = "none";
-      }
-
-      if (experience.length < 1000 || experience.length > 1400) {
-        document.getElementById("experienceError").style.display = "block";
-        document.getElementById("experienceError").textContent = "Experience must be 1000–1400 characters including spaces.";
-        valid = false;
-      } else {
-        document.getElementById("experienceError").style.display = "none";
-      }
-
-      if (!valid) e.preventDefault();
-    });
-  </script>
+      <button type="submit">Generate My CV</button>
+    </form>
+  </div>
 </body>
 </html>
