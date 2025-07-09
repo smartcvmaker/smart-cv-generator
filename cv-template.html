@@ -1,89 +1,74 @@
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: #fff;
-  color: #000;
-  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
   margin: 0;
-}
-
-h1 {
-  text-align: center;
+  padding: 0;
+  background: #ffffff;
   color: #333;
 }
 
-form {
-  max-width: 700px;
-  margin: auto;
+.container {
+  max-width: 900px;
+  margin: 20px auto;
   padding: 20px;
-  background: #f9f9f9;
-  border-radius: 12px;
+  background: #f3f3f3;
+  border-radius: 8px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-label {
+h1, h2 {
+  color: #0077cc;
+}
+
+form label {
   display: block;
   margin-top: 10px;
   font-weight: bold;
 }
 
-input, textarea {
+form input,
+form textarea {
   width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  border-radius: 6px;
+  padding: 10px;
+  margin-top: 4px;
   border: 1px solid #ccc;
-  box-sizing: border-box;
+  border-radius: 5px;
 }
 
 button {
   margin-top: 20px;
-  background-color: #4CAF50;
+  padding: 12px 20px;
+  background: #0077cc;
   color: white;
-  padding: 10px 20px;
   border: none;
-  border-radius: 8px;
+  border-radius: 5px;
+  font-size: 16px;
   cursor: pointer;
 }
 
 button:hover {
-  background-color: #45a049;
+  background: #005fa3;
 }
 
-/* CV layout (2-column, modern European style) */
-.cv-container {
-  display: grid;
-  grid-template-columns: 35% 65%;
-  gap: 20px;
-  max-width: 900px;
+#cvOutput {
   margin: 40px auto;
+  max-width: 900px;
   padding: 20px;
-  background: #fff;
+  background: #ffffff;
+  border: 2px solid #0077cc;
+  border-radius: 8px;
+}
+
+.cv {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 20px;
+}
+
+.cv-photo img {
+  max-width: 100%;
   border-radius: 10px;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
-}
-
-.cv-left {
-  border-right: 2px solid #eee;
-  padding-right: 20px;
-}
-
-.cv-right {
-  padding-left: 20px;
 }
 
 .cv-section {
   margin-bottom: 20px;
-}
-
-.cv-section h2 {
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 5px;
-  color: #222;
-  font-size: 20px;
-}
-
-.cv-photo {
-  max-width: 100%;
-  border-radius: 10px;
-  margin-bottom: 15px;
 }
