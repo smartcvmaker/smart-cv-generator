@@ -1,74 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Your CV</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      margin: 20px;
-    }
-    .cv {
-      max-width: 800px;
-      margin: auto;
-      border: 1px solid #ccc;
-      padding: 30px;
-      border-radius: 10px;
-    }
-    img {
-      max-width: 150px;
-      border-radius: 50%;
-    }
-    h1 {
-      margin-bottom: 10px;
-    }
-    .section {
-      margin-top: 20px;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart CV Generator</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="cv">
-    <div style="text-align: center;">
-      <img id="cv-image" src="" alt="Profile Picture"/>
-      <h1 id="cv-name">Name</h1>
-    </div>
+  <h1>Smart CV Generator</h1>
+  <form id="cv-form">
+    <label>Full Name*:</label>
+    <input type="text" name="fullName" required>
 
-    <div class="section">
-      <h2>Summary</h2>
-      <p id="cv-summary"></p>
-    </div>
+    <label>Email:</label>
+    <input type="email" name="email">
 
-    <div class="section">
-      <h2>Experience</h2>
-      <p id="cv-experience"></p>
-    </div>
+    <label>Phone Number*:</label>
+    <input type="tel" name="phone" required>
 
-    <div class="section">
-      <h2>Education</h2>
-      <p id="cv-education"></p>
-    </div>
+    <label>Address:</label>
+    <input type="text" name="address">
 
-    <div class="section">
-      <h2>Skills</h2>
-      <p id="cv-skills"></p>
-    </div>
-  </div>
+    <label>LinkedIn:</label>
+    <input type="url" name="linkedin">
 
-  <script>
-    const data = JSON.parse(localStorage.getItem("cvData"));
+    <label>Website:</label>
+    <input type="url" name="website">
 
-    if (data) {
-      document.getElementById("cv-name").innerText = data.name;
-      document.getElementById("cv-image").src = data.image;
-      document.getElementById("cv-summary").innerText = data.summary;
-      document.getElementById("cv-experience").innerText = data.experience;
-      document.getElementById("cv-education").innerText = data.education;
-      document.getElementById("cv-skills").innerText = data.skills;
-    } else {
-      document.body.innerHTML = "<h2>No CV data found. Please go back and fill the form.</h2>";
-    }
-  </script>
+    <label>Objective*:</label>
+    <textarea name="objective" required></textarea>
+
+    <label>Skills*:</label>
+    <textarea name="skills" required></textarea>
+
+    <label>Education*:</label>
+    <textarea name="education" required></textarea>
+
+    <label>Experience*:</label>
+    <textarea name="experience" required></textarea>
+
+    <label>Certifications:</label>
+    <textarea name="certifications"></textarea>
+
+    <label>Languages:</label>
+    <input type="text" name="languages">
+
+    <label>Hobbies:</label>
+    <input type="text" name="hobbies">
+
+    <label>Reference:</label>
+    <input type="text" name="reference">
+
+    <label>Upload Photo (Optional):</label>
+    <input type="file" name="photo" accept="image/*">
+
+    <button type="submit">Generate CV</button>
+  </form>
+
+  <script src="script.js"></script>
 </body>
 </html>
