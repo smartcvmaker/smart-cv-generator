@@ -1,62 +1,89 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart CV Generator</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <h1>Smart CV Generator</h1>
-  <form id="cv-form">
-    <label>Full Name*:</label>
-    <input type="text" name="fullName" required>
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #fff;
+  color: #000;
+  padding: 20px;
+  margin: 0;
+}
 
-    <label>Email:</label>
-    <input type="email" name="email">
+h1 {
+  text-align: center;
+  color: #333;
+}
 
-    <label>Phone Number*:</label>
-    <input type="tel" name="phone" required>
+form {
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
 
-    <label>Address:</label>
-    <input type="text" name="address">
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
 
-    <label>LinkedIn:</label>
-    <input type="url" name="linkedin">
+input, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
 
-    <label>Website:</label>
-    <input type="url" name="website">
+button {
+  margin-top: 20px;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
 
-    <label>Objective*:</label>
-    <textarea name="objective" required></textarea>
+button:hover {
+  background-color: #45a049;
+}
 
-    <label>Skills*:</label>
-    <textarea name="skills" required></textarea>
+/* CV layout (2-column, modern European style) */
+.cv-container {
+  display: grid;
+  grid-template-columns: 35% 65%;
+  gap: 20px;
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
 
-    <label>Education*:</label>
-    <textarea name="education" required></textarea>
+.cv-left {
+  border-right: 2px solid #eee;
+  padding-right: 20px;
+}
 
-    <label>Experience*:</label>
-    <textarea name="experience" required></textarea>
+.cv-right {
+  padding-left: 20px;
+}
 
-    <label>Certifications:</label>
-    <textarea name="certifications"></textarea>
+.cv-section {
+  margin-bottom: 20px;
+}
 
-    <label>Languages:</label>
-    <input type="text" name="languages">
+.cv-section h2 {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 5px;
+  color: #222;
+  font-size: 20px;
+}
 
-    <label>Hobbies:</label>
-    <input type="text" name="hobbies">
-
-    <label>Reference:</label>
-    <input type="text" name="reference">
-
-    <label>Upload Photo (Optional):</label>
-    <input type="file" name="photo" accept="image/*">
-
-    <button type="submit">Generate CV</button>
-  </form>
-
-  <script src="script.js"></script>
-</body>
-</html>
+.cv-photo {
+  max-width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
