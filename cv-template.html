@@ -12,7 +12,7 @@
       font-family: 'Poppins', sans-serif;
     }
     body {
-      background: #f0f4ff;
+      background: #f9f9f9;
       padding: 30px;
       color: #333;
     }
@@ -20,7 +20,7 @@
       display: flex;
       max-width: 1000px;
       margin: auto;
-      box-shadow: 0 0 20px rgba(0,0,0,0.08);
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
       background: #fff;
       border-radius: 12px;
       overflow: hidden;
@@ -32,13 +32,13 @@
       width: 35%;
     }
     .sidebar h2 {
+      margin-bottom: 10px;
       font-size: 26px;
       font-weight: 700;
     }
     .sidebar p {
-      margin: 8px 0;
+      margin: 10px 0;
       font-size: 14px;
-      word-break: break-word;
     }
     .main {
       padding: 30px;
@@ -47,14 +47,13 @@
     .main h3 {
       color: #5D9CFF;
       margin-bottom: 5px;
-      font-size: 18px;
     }
     .section {
       margin-bottom: 20px;
     }
     .section p {
       font-size: 14px;
-      line-height: 1.6;
+      line-height: 1.5;
     }
     .skills span, .languages span {
       display: inline-block;
@@ -67,84 +66,56 @@
   </style>
 </head>
 <body>
-
   <div class="container">
     <div class="sidebar">
-      <h2>{{full_name}}</h2>
-      <p>📧 {{email}}</p>
-      <p>📞 {{phone}}</p>
-      <p>🌍 {{address}}</p>
-
-      {% if linkedin %}
-      <p>🔗 {{linkedin}}</p>
-      {% endif %}
-
-      {% if website %}
-      <p>💼 {{website}}</p>
-      {% endif %}
+      <h2 id="fullName">Eman Ahmed</h2>
+      <p id="email">📧 smartcv.pk@gmail.com</p>
+      <p id="phone">📞 +92 300 1234567</p>
+      <p id="address">🌍 Baldia Town, Karachi</p>
+      <p id="linkedin">🔗 linkedin.com/in/emanahmed</p>
+      <p id="website">💼 www.smartcv.pk</p>
     </div>
-
     <div class="main">
-      {% if objective %}
       <div class="section">
         <h3>Objective</h3>
-        <p>{{objective}}</p>
+        <p id="objective">To secure a responsible career opportunity...</p>
       </div>
-      {% endif %}
-
-      {% if education %}
       <div class="section">
         <h3>Education</h3>
-        {% for edu in education %}
-        <p>{{edu.degree}} – {{edu.institute}} ({{edu.year}})</p>
-        {% endfor %}
+        <p id="education">BS Computer Science – University of Karachi (2020 - 2024)</p>
       </div>
-      {% endif %}
-
-      {% if experience %}
       <div class="section">
         <h3>Experience</h3>
-        {% for exp in experience %}
-        <p>{{exp.position}}, {{exp.company}} ({{exp.duration}})</p>
-        {% endfor %}
+        <div id="experience">
+          <p>Operation Executive, Spog On Logistics (Aug 2024 – Present)</p>
+          <p>Technical Incharge, Pakistan Steel Mills (2022 – 2024)</p>
+        </div>
       </div>
-      {% endif %}
-
-      {% if skills %}
       <div class="section skills">
         <h3>Skills</h3>
-        {% for skill in skills %}
-        <span>{{skill}}</span>
-        {% endfor %}
+        <div id="skills">
+          <span>HTML</span><span>CSS</span>
+        </div>
       </div>
-      {% endif %}
-
-      {% if languages %}
       <div class="section languages">
         <h3>Languages</h3>
-        {% for lang in languages %}
-        <span>{{lang}}</span>
-        {% endfor %}
+        <div id="languages">
+          <span>English</span><span>Urdu</span>
+        </div>
       </div>
-      {% endif %}
-
-      {% if certifications %}
       <div class="section">
         <h3>Certifications</h3>
-        {% for cert in certifications %}
-        <p>{{cert}}</p>
-        {% endfor %}
+        <div id="certifications">
+          <p>Google UX Design Certificate</p>
+        </div>
       </div>
-      {% endif %}
-
-      {% if reference %}
       <div class="section">
         <h3>Reference</h3>
-        <p>{{reference}}</p>
+        <p id="reference">Available upon request</p>
       </div>
-      {% endif %}
     </div>
   </div>
 
+  <script src="script.js"></script>
 </body>
 </html>
