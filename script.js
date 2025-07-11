@@ -1,115 +1,28 @@
-// Sample formData object (normally filled dynamically after form submission)
-const formData = {
-  fullName: "Eman Ahmed",
-  email: "smartcv.pk@gmail.com",
-  phone: "+92 300 1234567",
-  location: "Baldia Town, Karachi",
-  linkedin: "linkedin.com/in/emanahmed",
-  website: "www.smartcv.pk",
-
-  objective: "To secure a responsible career opportunity in a reputable organization to expand my learnings and skills.",
-  education: "BS Computer Science – University of Karachi (2020 - 2024)",
-  experience: `Operation Executive, Spog On Logistics (Aug 2024 – Present)
-Technical Incharge, Pakistan Steel Mills (2022 – 2024)`,
-
-  skills: "HTML, CSS, JavaScript, Automation, CV Writing",
-  languages: "English, Urdu",
-  certifications: `Google UX Design Certificate
-AI & Automation Tools – Coursera`,
-  reference: "" // Leave empty to auto-show "Available upon request"
-};
-
-
-// Main Function
-function populateCV(data) {
-  // Sidebar Info
-  document.querySelector(".sidebar h2").textContent = data.fullName || "Your Name";
-  setTextOrRemove(".sidebar", "📧", data.email);
-  setTextOrRemove(".sidebar", "📞", data.phone);
-  setTextOrRemove(".sidebar", "🌍", data.location);
-  setTextOrRemove(".sidebar", "🔗", data.linkedin);
-  setTextOrRemove(".sidebar", "💼", data.website);
-
-  // Main CV Sections
-  setSection(".main", "Objective", data.objective);
-  setSection(".main", "Education", data.education);
-  setSection(".main", "Experience", data.experience);
-  setTagsSection(".main", "Skills", data.skills);
-  setTagsSection(".main", "Languages", data.languages);
-  setSection(".main", "Certifications", data.certifications);
-
-  // Reference
-  const refText = data.reference?.trim()
-    ? data.reference
-    : "Available upon request";
-  setSection(".main", "Reference", refText);
+function getParam(name) {
+  const url = new URL(window.location.href);
+  return decodeURIComponent(url.searchParams.get(name) || "");
 }
 
-// Utility to insert or remove sidebar text
-function setTextOrRemove(containerSelector, labelIcon, value) {
-  const container = document.querySelector(containerSelector);
-  const existing = Array.from(container.querySelectorAll("p")).find(p =>
-    p.textContent.includes(labelIcon)
-  );
-  if (value) {
-    if (existing) existing.textContent = `${labelIcon} ${value}`;
-    else {
-      const p = document.createElement("p");
-      p.textContent = `${labelIcon} ${value}`;
-      container.appendChild(p);
-    }
-  } else if (existing) {
-    existing.remove();
-  }
-}
+document.getElementById("fullName").textContent = getParam("fullName");
+document.getElementById("email").textContent = "📧 " + getParam("email");
+document.getElementById("phone").textContent = "📞 " + getParam("phone");
+document.getElementById("address").textContent = "🌍 " + getParam("address");
+document.getElementById("linkedin").textContent = "🔗 " + getParam("linkedin");
+document.getElementById("website").textContent = "💼 " + getParam("website");
+document.getElementById("objective").textContent = getParam("objective");
+document.getElementById("education").textContent = getParam("education");
 
-// Utility to create or remove main CV sections
-function setSection(mainSelector, headingText, bodyText) {
-  const main = document.querySelector(mainSelector);
-  let section = Array.from(main.querySelectorAll(".section")).find(s =>
-    s.querySelector("h3")?.textContent === headingText
-  );
+const expDiv = document.getElementById("experience");
+expDiv.innerHTML = getParam("experience").split(";").map(e => `<p>${e}</p>`).join("");
 
-  if (bodyText?.trim()) {
-    if (!section) {
-      section = document.createElement("div");
-      section.className = "section";
-      section.innerHTML = `<h3>${headingText}</h3><p></p>`;
-      main.appendChild(section);
-    }
-    section.querySelector("p").innerHTML = bodyText.replace(/\n/g, "<br>");
-  } else if (section) {
-    section.remove();
-  }
-}
+const skillsDiv = document.getElementById("skills");
+skillsDiv.innerHTML = getParam("skills").split(",").map(skill => `<span>${skill}</span>`).join("");
 
-// Utility to handle tags (skills, languages, etc.)
-function setTagsSection(mainSelector, headingText, tagsString) {
-  const main = document.querySelector(mainSelector);
-  let section = Array.from(main.querySelectorAll(".section")).find(s =>
-    s.querySelector("h3")?.textContent === headingText
-  );
+const langDiv = document.getElementById("languages");
+langDiv.innerHTML = getParam("languages").split(",").map(lang => `<span>${lang}</span>`).join("");
 
-  if (tagsString?.trim()) {
-    const tags = tagsString.split(",").map(t => t.trim()).filter(t => t);
-    if (!section) {
-      section = document.createElement("div");
-      section.className = "section";
-      section.innerHTML = `<h3>${headingText}</h3>`;
-      main.appendChild(section);
-    } else {
-      section.innerHTML = `<h3>${headingText}</h3>`;
-    }
+const certDiv = document.getElementById("certifications");
+certDiv.innerHTML = getParam("certifications").split(";").map(c => `<p>${c}</p>`).join("");
 
-    tags.forEach(tag => {
-      const span = document.createElement("span");
-      span.textContent = tag;
-      section.appendChild(span);
-    });
-  } else if (section) {
-    section.remove();
-  }
-}
-
-// Run this on page load or after form submission
-populateCV(formData);
+const ref = getParam("reference");
+document.getElementById("reference").textContent = ref || "Available upon request";
